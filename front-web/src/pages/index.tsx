@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 
@@ -19,9 +21,11 @@ export default function Home() {
               Escolha o seu pedido e em poucos minutos levaremoss na sua porta
             </h3>
 
-            <a className={styles.button_order}>
-              FAZER PEDIDO
-            </a>
+            <Link href="/orders">
+              <a className={styles.button_order}>
+                FAZER PEDIDO
+              </a>
+            </Link>
           </div>
 
           <div className={styles.image_wrapper}>
