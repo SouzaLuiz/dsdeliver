@@ -1,0 +1,7 @@
+.wrapper {
+  background-color: var(--primary-color);
+  height: 70px;
+  display: flex;
+  align-items: center;
+  padding: 0 40px;
+}
