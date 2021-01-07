@@ -10,15 +10,15 @@ export default function Home() {
     <>
       <Navbar />
       
-      <div className={styles.wrapper}>
-        <div className={styles.content}>
+      <div className="container">
+        <div className={styles.wrapper}>
           <div className={styles.actions}>
             <h1 className={styles.title}>
-              Faça seu pedido<br/> que entregamos<br/> pra você!!!
+              Faça seu pedido que entregamos pra você!!!
             </h1>
 
             <h3 className={styles.subtitle}>
-              Escolha o seu pedido e em poucos minutos levaremoss na sua porta
+              Escolha o seu pedido e em poucos minutos levaremos na sua porta.
             </h3>
 
             <Link href="/orders">
