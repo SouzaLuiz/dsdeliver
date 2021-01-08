@@ -6,6 +6,14 @@ interface Props {
   product: Product
 }
 
+function formatMoney (value: number) {
+  return Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL', 
+    minimumFractionDigits: 2
+  }).format(value)
+}
+
 export default function ProductCard ({ product }: Props) {
   return (
     <div className={styles.wrapper}>
@@ -15,7 +23,7 @@ export default function ProductCard ({ product }: Props) {
         <img className={styles.image} src={product.imageUri} />
       </div>
     
-      <h3 className={styles.price}>R$ {product.price}</h3>
+      <h3 className={styles.price}>R$ {formatMoney(product.price)}</h3>
 
       <div className={styles.description}>
         <h3>Descrição</h3>

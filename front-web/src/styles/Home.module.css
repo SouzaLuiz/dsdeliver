@@ -82,4 +82,10 @@
   .title {
     margin-top: 20px;
   }
+
+  .button_order {
+    font-size: 2rem;
+    height: 50px;
+    width: 235px;
+  }
 }

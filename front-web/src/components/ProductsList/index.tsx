@@ -10,7 +10,7 @@ interface Props {
 
 export default function ProductsList ({ products }: Props) {
   return (
-    <div className={styles.wrapper}>
+    <div className="container">
       <div className={styles.items}>
         {products.map(product => (
           <ProductCard key={product.id} product={product}/>

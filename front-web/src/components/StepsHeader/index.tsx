@@ -3,7 +3,7 @@ import styles from './StepsHeader.module.css'
 
 export default function StepsHeader () {
   return (
-    <header className={styles.wrapper}>
+    <header className={`${styles.wrapper} container`}>
       <div className={styles.content}>
         <h1 className={styles.title}>SIGA AS <br/> ETAPAS</h1>
       

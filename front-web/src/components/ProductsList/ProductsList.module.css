@@ -1,12 +1,13 @@
-.wrapper {
-  display: flex;
-  justify-content: center;
+.items {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 230px);
+  grid-gap: 20px 8px;
+  justify-content: space-between;
 }
 
-.items {
-  width: 80%;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 240px);
-  grid-gap: 20px 15px;
-  justify-content: space-between;
+@media only screen and (max-width: 510px) {
+  .items {
+    justify-content: center;
+  }
 }
