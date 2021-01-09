@@ -1,5 +1,7 @@
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 
+import L from 'leaflet'
+
 import 'leaflet/dist/leaflet.css'
 import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css'
 import 'leaflet-defaulticon-compatibility'
@@ -14,6 +16,12 @@ interface Props {
   }
 }
 
+const CustomMarker = L.icon({ 
+  iconUrl: '/marker.svg',
+  iconSize: [51, 51],
+  iconAnchor: [25, 51]
+})
+
 const Map: React.FC<Props> = ({position, address}) => {
   return (
     <MapContainer 
@@ -25,7 +33,7 @@ const Map: React.FC<Props> = ({position, address}) => {
     >
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>
 
-      <Marker position={position} draggable>
+      <Marker position={position} draggable icon={CustomMarker}>
         <Popup>
           <span className={styles.popup}>{address}</span>
         </Popup>
