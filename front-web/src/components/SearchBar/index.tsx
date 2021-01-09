@@ -65,6 +65,7 @@ const SearchBar: React.FC<Props> = ({ handleChangeSelect }) => {
   return (
     <div className={styles['search-wrapper']}>  
       <AsyncSelect
+        instanceId="some"
         placeholder="Digite seu endereço"
         className={styles.search}
         noOptionsMessage={_ => 'Sem opções'}

@@ -19,7 +19,7 @@ function formatMoney (value: number) {
 }
 
 const ProductCard: React.FC<Props> = ({ product, isSelected }) => {
-  const {handleSelectProduct} = useContext(OrderContext)
+  const { handleSelectProduct } = useContext(OrderContext)
 
   return (
     <div 
