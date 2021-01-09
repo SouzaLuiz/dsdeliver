@@ -15,25 +15,12 @@
   color: var(--secondary-color);
 }
 
-.filter-wrapper {
-  display: flex;
-  justify-content: center;
-  margin: 20px 0;
-}
-
-.filter {
-  width: 90%;
-  z-index: 1000;
-}
-
-.filter > div {
-  border-radius: 10px;
-  font-size: 4rem;
-  min-height: 60px;
-}
-
 .map-wrapper {
   height: 400px;
+  width: 100%;
+  padding: 0 10px;
+  margin: 15px auto 5px;
+  position: relative;
+  display: flex;
+  justify-content: center;
 }
-
-

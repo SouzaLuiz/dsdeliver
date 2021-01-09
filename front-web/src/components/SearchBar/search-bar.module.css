@@ -1,0 +1,19 @@
+.search-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 15px 0;
+  width: 100%;
+  height: 30px;
+  z-index: 1000;
+  position: absolute;
+}
+
+.search {
+  width: 90%;
+}
+
+.search > div {
+  border-radius: 10px;
+  min-height: 50px;
+  vertical-align: middle;
+}

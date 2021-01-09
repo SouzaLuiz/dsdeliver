@@ -15,11 +15,12 @@ interface Props {
 }
 
 const Map: React.FC<Props> = ({position, address}) => {
-  return (    
+  return (
     <MapContainer 
       center={position} 
       zoom={14} 
       scrollWheelZoom
+      zoomControl={false}
       className={styles.content}
     >
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>
