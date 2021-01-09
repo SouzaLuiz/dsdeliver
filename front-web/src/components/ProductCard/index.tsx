@@ -1,9 +1,12 @@
 
-import { Product } from '../../pages/orders'
-import styles from './ProductCard.module.css'
+import { Product } from '../../pages/products'
+
+import styles from './product-card.module.css'
 
 interface Props {
   product: Product
+  onSelectProduct: (product: Product) => void
+  isSelected: boolean
 }
 
 function formatMoney (value: number) {
@@ -14,16 +17,22 @@ function formatMoney (value: number) {
   }).format(value)
 }
 
-export default function ProductCard ({ product }: Props) {
+const ProductCard: React.FC<Props> = ({ product, onSelectProduct, isSelected }) => {
   return (
-    <div className={styles.wrapper}>
+    <div 
+      className={`
+        ${styles.wrapper} 
+        ${isSelected ? styles['wrapper--selected'] : ''}`
+      } 
+      onClick={() => onSelectProduct(product)}
+    >
       <h3 className={styles.title}>{product.name}</h3>
 
-      <div className={styles.image_wrapper}>
+      <div className={styles['image-wrapper']}>
         <img className={styles.image} src={product.imageUri} />
       </div>
     
-      <h3 className={styles.price}>R$ {formatMoney(product.price)}</h3>
+      <h3 className={styles.price}>{formatMoney(product.price)}</h3>
 
       <div className={styles.description}>
         <h3>Descrição</h3>
@@ -33,3 +42,5 @@ export default function ProductCard ({ product }: Props) {
     </div>
   )
 }
+
+export default ProductCard

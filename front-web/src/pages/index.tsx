@@ -21,7 +21,7 @@ export default function Home() {
               Escolha o seu pedido e em poucos minutos levaremos na sua porta.
             </h3>
 
-            <Link href="/orders">
+            <Link href="/products">
               <a className={styles.button_order}>
                 FAZER PEDIDO
               </a>

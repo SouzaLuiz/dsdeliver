@@ -3,9 +3,9 @@ import dynamic from 'next/dynamic'
 import { useState } from 'react'
 
 import AsyncSelect from 'react-select/async'
-import { OrderLocationData } from '../../pages/orders'
+import { OrderLocationData } from '../../pages/products'
 
-import styles from './OrderLocation.module.css'
+import styles from './order-location.module.css'
 
 const initialPosition = {
   lat: -2.9916052,
@@ -70,21 +70,24 @@ const OrderLocation: React.FC<Props> = ({ onChangeLocation }) => {
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.content}>
-        <h3 className={styles.title}>
-          Selecione onde o pedido deve ser entregue:
-        </h3>
+      <h3 className={styles.title}>
+        Selecione onde o pedido deve ser entregue:
+      </h3>
 
-        <div className={styles.filter_wrapper}>
-          <AsyncSelect
-            placeholder="Digite um endereço para entregar o pedido"
-            className={styles.filter}
-            loadOptions={loadOptions}
-            onChange={value => handleChangeSelect(value)}
-          />
-        </div>
-        
-        <Map position={address.position} address={address.label} />
+      <div className={styles['filter-wrapper']}>
+        <AsyncSelect
+          placeholder="Digite um endereço para entregar o pedido"
+          className={styles.filter}
+          loadOptions={loadOptions}
+          onChange={value => handleChangeSelect(value)}
+        />
+      </div>
+      
+      <div className={styles['map-wrapper']}>
+        <Map 
+          position={address.position} 
+          address={address.label}
+        />
       </div>
     </div>
   )
