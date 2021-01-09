@@ -1,9 +1,9 @@
 import axios from 'axios'
 import dynamic from 'next/dynamic'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 
 import AsyncSelect from 'react-select/async'
-import { OrderLocationData } from '../../pages/products'
+import { OrderContext } from '../../context/OrderContext'
 
 import styles from './order-location.module.css'
 
@@ -21,20 +21,18 @@ interface Place {
   }
 }
 
-interface Props {
-  onChangeLocation: (location: OrderLocationData) => void
-}
 
 function fetchLocalMapBox (local: string) {
   const mapboxToken = process.env.NEXT_PUBLIC_ACCESS_TOKEN_MAP_BOX
   return axios(`https://api.mapbox.com/geocoding/v5/mapbox.places/${local}.json?access_token=${mapboxToken}`)
 }
 
-
-const OrderLocation: React.FC<Props> = ({ onChangeLocation }) => {
+const OrderLocation = () => {
   const [address, setAddress] = useState<Place>({
     position: initialPosition
   })
+
+  const { setOrderLocation  } = useContext(OrderContext)
 
   const Map = dynamic(
     () => import('../Map'),
@@ -61,7 +59,7 @@ const OrderLocation: React.FC<Props> = ({ onChangeLocation }) => {
   const handleChangeSelect = (place: Place) => {
     setAddress(place)
     
-    onChangeLocation({
+    setOrderLocation({
       latitude: place.position.lat,
       longitude: place.position.lng,
       address: place.label!

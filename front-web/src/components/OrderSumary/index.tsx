@@ -1,7 +1,11 @@
 
+import { useContext } from 'react';
+import { OrderContext } from '../../context/OrderContext';
 import styles from './order-sumary.module.css'
 
 const OrderSumary: React.FC = () => {
+  const { showData } = useContext(OrderContext)
+
   return (
     <div className={styles.wrapper}>
       <div>
@@ -16,7 +20,7 @@ const OrderSumary: React.FC = () => {
         </span>
       </div>
 
-      <button className={styles['make-order']}>
+      <button className={styles['make-order']} onClick={showData}>
         Fazer pedido
       </button>
     </div>

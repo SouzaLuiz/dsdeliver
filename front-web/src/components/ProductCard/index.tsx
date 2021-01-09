@@ -1,11 +1,12 @@
 
+import { useContext, useEffect } from 'react'
+import { OrderContext } from '../../context/OrderContext'
 import { Product } from '../../pages/products'
 
 import styles from './product-card.module.css'
 
 interface Props {
   product: Product
-  onSelectProduct: (product: Product) => void
   isSelected: boolean
 }
 
@@ -17,14 +18,16 @@ function formatMoney (value: number) {
   }).format(value)
 }
 
-const ProductCard: React.FC<Props> = ({ product, onSelectProduct, isSelected }) => {
+const ProductCard: React.FC<Props> = ({ product, isSelected }) => {
+  const {handleSelectProduct} = useContext(OrderContext)
+
   return (
     <div 
       className={`
         ${styles.wrapper} 
         ${isSelected ? styles['wrapper--selected'] : ''}`
       } 
-      onClick={() => onSelectProduct(product)}
+      onClick={() => handleSelectProduct(product)}
     >
       <h3 className={styles.title}>{product.name}</h3>
 
