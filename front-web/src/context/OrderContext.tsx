@@ -1,4 +1,5 @@
 import { createContext, useState } from "react"
+import { toast } from "react-toastify"
 import { Product } from "../pages/products"
 import api from "../services/api"
 
@@ -24,6 +25,21 @@ const OrderContextProvider: React.FC = ({ children }) => {
   const [orderLocation, setOrderLocation] = useState<OrderLocationData>()
   const [totalPrice, setTotalPrice] = useState(0)
 
+  const notify = (number) => 
+    toast.success(`Pedido realizado com sucesso N°${number}`, {
+      style: {fontSize: 20}
+    })
+
+  const errorNotify = () => 
+    toast.error('Erro ao realizar pedido tente novamente', {
+      style: {fontSize: 20}
+    })
+
+  const warningNotify = (message: string) => 
+    toast.warning(message, {
+      style: {fontSize: 20}
+    })
+
   const handleSelectProduct = (product: Product) => {
     const isAlreadySelected = selectedProducts.some(item => item.id === product.id)
   
@@ -41,7 +57,29 @@ const OrderContextProvider: React.FC = ({ children }) => {
     return selectedProducts.some(item => item.id === product.id)
   }
 
+  const clearInformations = () => {
+    const orderClear = {
+      latitude: -2.9916052,
+      longitude: -60.0428671,
+      address: null
+    }
+
+    setSelectedProducts([])
+    setTotalPrice(0)
+    setOrderLocation(orderClear)
+  }
+
   const createOrder = () => {
+    if (selectedProducts.length === 0) {
+      warningNotify('Selecione alguns produtos.')
+      return
+    }
+
+    if (!orderLocation.address) {
+      warningNotify('Insira o endereço de entrega.')
+      return
+    }
+
     const orderData = {
       address: orderLocation.address,
       latitude: orderLocation.latitude,
@@ -50,8 +88,11 @@ const OrderContextProvider: React.FC = ({ children }) => {
     }
 
     api.post('/orders', orderData)
-      .then(response => console.log(response.data))
-      .catch(error => console.log(error))
+      .then(response => {
+        notify(response.data.id)
+        clearInformations()
+      })
+      .catch(errorNotify)
   }
 
   return (

@@ -1,6 +1,6 @@
 import axios from 'axios'
 import dynamic from 'next/dynamic'
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 
 import { OrderContext } from '../../context/OrderContext'
 import SearchBar from '../SearchBar'
@@ -32,6 +32,14 @@ const OrderLocation = () => {
     () => import('../Map'),
     { ssr: false }
   )
+
+  useEffect(() => {
+    setOrderLocation({
+      latitude: address.position.lat,
+      longitude: address.position.lng,
+      address: address.label
+    })
+  },[])
   
   const handleChangeSelect = (place: Place) => {
     setAddress(place)
@@ -39,7 +47,7 @@ const OrderLocation = () => {
     setOrderLocation({
       latitude: place.position.lat,
       longitude: place.position.lng,
-      address: place.label!
+      address: place.label
     })
   }
 
