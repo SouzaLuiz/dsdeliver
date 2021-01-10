@@ -1,5 +1,14 @@
 .wrapper {
-  height: 80vh;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+.content {
+  max-width: 980px;
+  width: 94%;
+  margin: 0 auto;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -14,37 +23,34 @@
   font-weight: bold;
   font-size: 4rem;
   line-height: 58px;
-  letter-spacing: -0.015em;
   color: var(--dark-color);
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
 .subtitle {
   font-weight: normal;
   font-size: 2.4rem;
   line-height: 33px;
-  letter-spacing: -0.015em;
   color: var(--secondary-color);
   margin-bottom: 30px;
 }
 
-.button_order {
+.button-order {
   background-color: var(--primary-color);
   border-radius: 10px;
-  height: 70px;
+  height: 60px;
   width: 235px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: bold;
   font-size: 2.4rem;
-  letter-spacing: -0.015em;
   transition: background-color .6s;
   color: #FFF;
   cursor: pointer;
 }
 
-.button_order:hover {
+.button-order:hover {
   background-color: var(--primary-hover-color);
 }
 
@@ -52,22 +58,25 @@
   width: 100%;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 800px) {
   .title {
-    font-size: 3rem;
+    font-size: 3.4rem;
     line-height: 40px;
     margin-bottom: 20px;
   }
+
+  .subtitle {
+    font-size: 2.2rem;
+  }
 }
 
-@media only screen and (max-width: 550px) {
-  .wrapper {
-    height: auto;
+@media only screen and (max-width: 770px) {
+  .content {
     flex-direction: column-reverse;
+    margin: 20px auto;
   }
 
-  .image_wrapper {
-    margin-top: 20px;
+  .image-wrapper {
     max-width: 300px;
   }
 
@@ -76,16 +85,32 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 10px 0 20px;
+    margin: 15px 0 15px;
   }
+}
 
+@media only screen and (max-width: 470px) {
   .title {
-    margin-top: 20px;
+    font-size: 2.8rem;
   }
 
-  .button_order {
+  .subtitle {
+    font-size: 2.4rem;
+  }
+
+  .button-order {
     font-size: 2rem;
     height: 50px;
     width: 235px;
+  }
+}
+
+@media only screen and (max-width: 370px) {
+  .title {
+    font-size: 2.4rem;
+  }
+
+  .subtitle {
+    font-size: 2rem;
   }
 }

@@ -1,17 +1,16 @@
 import Link from 'next/link'
 
-import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
+import Footer from "../components/Footer"
+import Navbar from "../components/Navbar"
 
-import styles from '../styles/Home.module.css'
+import styles from '../styles/home.module.css'
 
 export default function Home() {
   return (
-    <>
+    <div className={styles.wrapper}>
       <Navbar />
-      
-      <div className="container">
-        <div className={styles.wrapper}>
+            
+        <main className={styles.content}>
           <div className={styles.actions}>
             <h1 className={styles.title}>
               Faça seu pedido que entregamos pra você!!!
@@ -22,19 +21,18 @@ export default function Home() {
             </h3>
 
             <Link href="/products">
-              <a className={styles.button_order}>
-                FAZER PEDIDO
+              <a className={styles['button-order']}>
+                VER PRODUTOS
               </a>
             </Link>
           </div>
 
-          <div className={styles.image_wrapper}>
+          <div className={styles['image-wrapper']}>
             <img src="/image-home.svg" className={styles.image}/>
           </div>
-        </div>
-      </div>
+        </main>
 
       <Footer />
-    </>
+    </div>
   )
 }

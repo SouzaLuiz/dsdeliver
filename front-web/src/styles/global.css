@@ -24,9 +24,3 @@ ul {
 a {
   text-decoration: none;
 }
-
-.container {
-  max-width: 980px;
-  width: 90%;
-  margin: 0 auto;
-}
