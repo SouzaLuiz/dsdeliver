@@ -29,12 +29,12 @@ const ProductCard: React.FC<Props> = ({ product, isSelected }) => {
       } 
       onClick={() => handleSelectProduct(product)}
     >
-      <h3 className={styles.title}>{product.name}</h3>
-
       <div className={styles['image-wrapper']}>
         <img className={styles.image} src={product.imageUri} />
       </div>
-    
+
+      <h3 className={styles.title}>{product.name}</h3>
+
       <h3 className={styles.price}>{formatMoney(product.price)}</h3>
 
       <div className={styles.description}>

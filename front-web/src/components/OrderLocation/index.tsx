@@ -1,4 +1,3 @@
-import axios from 'axios'
 import dynamic from 'next/dynamic'
 import { useContext, useEffect, useState } from 'react'
 
@@ -21,17 +20,17 @@ export interface Place {
   }
 }
 
+const Map = dynamic(
+  () => import('../Map'),
+  { ssr: false }
+)
+
 const OrderLocation = () => {
   const [address, setAddress] = useState<Place>({
     position: initialPosition
   })
 
   const { setOrderLocation  } = useContext(OrderContext)
-
-  const Map = dynamic(
-    () => import('../Map'),
-    { ssr: false }
-  )
 
   useEffect(() => {
     setOrderLocation({
